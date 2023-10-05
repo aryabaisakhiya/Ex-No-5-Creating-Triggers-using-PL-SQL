@@ -14,15 +14,14 @@
 
 ### Program:
 ```
-CREATE TABLE employed(
+CREATE TABLE employee12(
   empid NUMBER,
   empname VARCHAR2(10),
   dept VARCHAR2(10),
   salary NUMBER
 );
 
-CREATE TABLE sal_log (
-  log_id NUMBER GENERATED ALWAYS AS IDENTITY,
+CREATE TABLE logs_salary12 (
   empid NUMBER,
   empname VARCHAR2(10),
   old_salary NUMBER,
@@ -30,12 +29,13 @@ CREATE TABLE sal_log (
   update_date DATE
 );
 -- Insert the values in the employee table
-insert into employedd values(1,'Shakthi','IT',1000000);
-insert into employedd values(2,'Suji','SALES',500000)
+insert into employee12 values(1,'Arya','HR',900000);
+insert into employee12 values(2,'Nikita','Manager',700000);
+insert into employee12 values(3,'Krishna','Finance',880000);
 ```
 
 ### Create employee table
-```CREATE TABLE employed(
+```CREATE TABLE employee12(
   empid NUMBER,
   empname VARCHAR2(10),
   dept VARCHAR2(10),
@@ -45,8 +45,8 @@ insert into employedd values(2,'Suji','SALES',500000)
 
 ### Create salary_log table
 ```
-CREATE TABLE sal_log (
-  log_id NUMBER GENERATED ALWAYS AS IDENTITY,
+CREATE TABLE logs_salary12 (
+  log_id NUMBER,
   empid NUMBER,
   empname VARCHAR2(10),
   old_salary NUMBER,
@@ -59,8 +59,8 @@ CREATE TABLE sal_log (
 ### PLSQL Trigger code
 ```
 -- Create the trigger
-CREATE OR REPLACE TRIGGER log_sal_update
-BEFORE UPDATE ON employed
+CREATE OR REPLACE TRIGGER logs_salary_update
+BEFORE UPDATE ON employee12
 FOR EACH ROW
 BEGIN
   IF :OLD.salary != :NEW.salary THEN
@@ -70,22 +70,23 @@ BEGIN
 END;
 /
 -- Insert the values in the employee table
-insert into employed values(1,'Shakthi','IT',1000000);
-insert into employed values(2,'Suji','SALES',500000);
-
+insert into employee12 values(1,'Arya','HR',900000);
+insert into employee12 values(2,'Nikita','Manager',700000);
+insert into employee12 values(3,'Krishna',Finance',880000);
 -- Update the salary of an employee
-UPDATE employedd
-SET salary = 60000
+UPDATE employee12
+SET salary = 990000
 WHERE empid = 1;
 -- Display the employee table
-SELECT * FROM employedd;
+SELECT * FROM employee12;
 
--- Display the salary_logg table
-SELECT * FROM sal_logg;
+-- Display the logs_salary12 table
+SELECT * FROM logs_salary12;
 ```
 
 ### Output:
-![Creating triggers](https://github.com/Jeevapriya14/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/121003043/6caf3238-451b-44b6-bf6c-a901cd1311b3)
+![image](https://github.com/aryabaisakhiya/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/119393645/bebc2128-c009-432b-b701-36cc3cbbf461)
+
 
 
 ### Result:
